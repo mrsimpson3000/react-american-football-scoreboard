@@ -76,6 +76,8 @@ function App() {
           <button onClick={awayScoreReset} className='awayScoreReset'>
             Reset Away Score
           </button>
+        </div>
+        <div className='controlButtons'>
           <button onClick={currentQuarter} className='quarterButton'>
             Increase Quarter
           </button>
