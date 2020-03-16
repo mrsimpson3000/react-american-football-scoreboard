@@ -13,11 +13,25 @@ function App() {
   const homeFieldGoal = () => {
     setHome(home + 3);
   };
+  const homeScoreReset = () => {
+    setHome(0);
+  };
   const awayTouchdown = () => {
     setAway(away + 7);
   };
   const awayFieldGoal = () => {
     setAway(away + 3);
+  };
+  const awayScoreReset = () => {
+    setAway(0);
+  };
+  const [quarter, setQuarter] = useState(1);
+  const currentQuarter = () => {
+    if (quarter < 4) {
+      setQuarter(quarter + 1);
+    } else {
+      setQuarter(1);
+    }
   };
 
   return (
@@ -37,7 +51,7 @@ function App() {
             <div className='away__score'>{away}</div>
           </div>
         </div>
-        <BottomRow />
+        <BottomRow quarter={quarter} />
       </section>
       <section className='buttons'>
         <div className='homeButtons'>
@@ -48,6 +62,9 @@ function App() {
           <button onClick={homeFieldGoal} className='homeButtons__fieldGoal'>
             Home Field Goal
           </button>
+          <button onClick={homeScoreReset} className='homeScoreReset'>
+            Reset Home Score
+          </button>
         </div>
         <div className='awayButtons'>
           <button onClick={awayTouchdown} className='awayButtons__touchdown'>
@@ -55,6 +72,12 @@ function App() {
           </button>
           <button onClick={awayFieldGoal} className='awayButtons__fieldGoal'>
             Away Field Goal
+          </button>
+          <button onClick={awayScoreReset} className='awayScoreReset'>
+            Reset Away Score
+          </button>
+          <button onClick={currentQuarter} className='quarterButton'>
+            Increase Quarter
           </button>
         </div>
       </section>
